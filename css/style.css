@@ -1,0 +1,254 @@
+/* Globales*/
+:root{
+
+    /* Colores */
+    --moradoFuerte: #1c0021;
+    --morado: #240047;
+    --tonoMedio: #273a65;
+    --azul: #00a9d4;
+    --azulCielo: #40ffdc;
+    --amarillo: #F1BC18;
+
+    /* Fuente */
+    --fuentePrincipal: 'Pirata One', cursive;
+
+}
+/* Generales*/
+
+/*Snipet infaltable en todas las pasginas wweb */
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /*Formula para hacer que 1rem sea igual a 10px */
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+body{
+    background-color: var(--moradoFuerte);
+    font-size: 1.6rem;
+    line-height: 1.5;/*Interlineado*/
+}
+
+p{
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+a {
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1, h2, h3{
+    text-align: center;
+    color: var(--azulCielo);
+    font-family: var(--fuentePrincipal);
+}
+
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 3.2rem;
+}
+h3{
+    font-size: 2.4rem;
+}
+/*Header*/
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.header__logo{
+    margin: 3rem 0;
+}
+/*Navegacion*/
+.navegacion{
+    background-color: var(--azul);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    /*forma nueva de separacion*/
+    gap: 2rem; /*esto es para separar horizontalmente entre elementos*/
+}
+.navegacion__enlace{
+    font-family: var(--fuentePrincipal);
+    color: var(--moradoFuerte);
+    font-size: 3rem;
+   /* margin-right: 2rem; uso esta separacion por que la nueva no la soportan muchos navegadores*/
+}
+
+.navegacion__enlace:last-of-type{ /*este pseudo selector lo que hara es seleccionar el ultimo elemento de la clase que le indico
+    en este caso sera el ultimo elemento de las clase .navegacion__enlace*/
+    margin-right: 0;
+}
+
+.navegacion__enlace--activo,/*Esto es BEM, "navegacion(bloque)__enlace(elemento)--activo(modificador)" y sirve para hacer limpieza de codigo*/
+.navegacion__enlace:hover{
+    color: var(--amarillo);
+}
+/* Footer */
+.footer{
+    background-color: var(--azul);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto{
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+    color: var(--moradoFuerte);
+    font-size: 2rem;
+}
+
+/* Grid de tabla de productos */
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px){ 
+    .grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+}
+ 
+/* Productos */
+.producto{
+    background-color: var(--azul);
+    padding: 1rem;
+}
+.producto__imagen{
+    width: 100%;
+}
+.producto__nombre{
+    font-size: 4rem;
+}
+.producto__precio{
+    font-size: 2.5rem;
+    color: var(--morado);
+}
+.producto__nombre,
+.producto__precio{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Imagenes Adicionales*/
+.grafico{
+    min-height:30rem;
+    background-repeat: no-repeat; /* le digo que no se repitan los graficos de fondo */
+    background-size: cover; /*le digo que tome de tamaño todo el que esta disponible de fondo */
+    grid-column: 1/ 3; /* grid-column es alineacion de izquierda a derecha por numero de lineas en el grid*/
+
+}
+.grafico--camisas{
+    grid-row:2 / 3; /* grid-row es alineacion de arriba hacia abajo por numero de lineas en el grid*/
+    background-image: url(../img/grafico1.jpg);
+}
+.grafico--node{
+    background-image: url(../img/grafico2.jpg);
+    grid-row: 8 / 9;
+}
+@media (min-width: 768px){
+    .grafico--node{
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+    }
+}
+
+/*Nosotros*/
+.nosotros{
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+}
+@media (min-width: 768px){
+    .nosotros{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+.parrafo{
+    font-family: var(--fuentePrincipal);
+}
+.nosotros__img{
+    grid-row: 1 / 2;
+    width: 100%;
+}
+@media (min-width: 768px){
+    .nosotros__img{
+        grid-column: 2 / 3;
+    }
+}
+/* Bloques */
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px){
+    .bloques{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.bloque{
+    text-align: center;
+}
+.bloque__imagen{
+    width: 100%;
+}
+.bloque__titulo{
+    margin: 0;
+}
+/*Pagina del Producto*/
+@media (min-width: 768px){
+    .camisa{
+        display: flex;
+        grid-template-columns: repeat (2, 1fr);
+        column-gap: 2rem;
+    }
+}
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+}
+.formulario__campo{
+    border-color: var(--azul);
+    border-width: 1rem;
+    border-style: solid;
+    background-color: var(--morado);
+    color: white;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    appearance: none; /*Para quitarle la decoracion a los input pero aun asi funcionara igual*/
+
+}
+.formulario__submit{
+    background-color: var(--amarillo);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease; /*animacion de transicion*/
+    grid-column: 1 / 3;
+}
+.formulario__submit:hover{
+    cursor: pointer;
+    background-color: var(--azul);
+}
+.camisa__imagen{
+    width: 100%;
+}
